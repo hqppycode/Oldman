@@ -38,7 +38,9 @@ export async function getStaticPaths() {
     .firestore()
     .collection("blog")
     .onSnapshot((snap) => {
-      snap.docs.map((doc) => doc.id);
+      snap.docs.map((doc) => {
+        id: doc.id;
+      });
     });
 
   return {
