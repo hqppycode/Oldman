@@ -42,10 +42,9 @@ export async function getStaticPaths() {
         id: doc.id,
       }));
     });
+
   return {
-    paths: [
-      { params: { id: content.id } }, // See the "paths" section below
-    ],
+    paths: [{ params: { id: content } }],
     fallback: false,
   };
 }
