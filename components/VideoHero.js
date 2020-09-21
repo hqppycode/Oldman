@@ -95,5 +95,5 @@ const MainTitle = styled.h1`
 `;
 
 const SubTitle = styled.h2`
-  margin-top: 59vh;
+  margin-top: 62vh;
 `;
