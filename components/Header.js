@@ -20,13 +20,13 @@ export default function Header() {
           </Link>
         </Logo>
         <Links>
-          <Link href="/">
+          <Link href="/about">
             <a>About</a>
           </Link>
-          <Link href="/">
+          <Link href="/articles">
             <a>Survival</a>
           </Link>
-          <Link href="/">
+          <Link href="/contact">
             <a>Contact</a>
           </Link>
         </Links>

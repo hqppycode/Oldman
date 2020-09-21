@@ -60,7 +60,7 @@ export default function Video() {
       </p>
       <p>
         To find out more, take a look at the{" "}
-        <Link href="/">
+        <Link href="/articles">
           <a>article section</a>
         </Link>
       </p>
