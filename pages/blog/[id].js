@@ -14,7 +14,7 @@ export default function Blog(props) {
   );
 }
 
-export const getServerSideProps = async ({ query }) => {
+export const getStaticProps = async ({ query }) => {
   const content = {};
   await fire
     .firestore()
@@ -32,3 +32,20 @@ export const getServerSideProps = async ({ query }) => {
     },
   };
 };
+
+export async function getStaticPaths() {
+  const content = await fire
+    .firestore()
+    .collection("blog")
+    .onSnapshot((snap) => {
+      snap.docs.map((doc) => ({
+        id: doc.id,
+      }));
+    });
+  return {
+    paths: [
+      { params: { id: content.id } }, // See the "paths" section below
+    ],
+    fallback: false,
+  };
+}
