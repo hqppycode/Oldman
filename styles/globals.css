@@ -1,9 +1,19 @@
-html,
-body {
+* {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.3rem;
+  color: #222;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 3rem;
 }
 
 a {
@@ -11,6 +21,41 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.spacing > p {
+  margin-bottom: 1rem;
+}
+
+.spacing a {
+  text-decoration: underline;
+  transition: color 0.1s ease;
+}
+
+.spacing a:hover {
+  color: #228b22;
+}
+
+.back-button {
+  text-decoration: underline;
+  transition: color 0.1s ease;
+}
+
+.back-button:hover {
+  color: #228b22;
+}
+
+.home-link {
+  transition: color 0.1s ease;
+}
+
+.home-link:hover {
+  color: #228b22;
 }
