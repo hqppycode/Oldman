@@ -1,4 +1,4 @@
-import fire from "../../config/fire-config";
+import fire from "../config/fire-config";
 import Link from "next/link";
 const ReactMarkdown = require("react-markdown");
 
@@ -14,7 +14,7 @@ export default function Blog(props) {
   );
 }
 
-export const getStaticProps = async ({ query }) => {
+export const getServerSideProps = async ({ query }) => {
   const content = {};
   await fire
     .firestore()
@@ -33,18 +33,18 @@ export const getStaticProps = async ({ query }) => {
   };
 };
 
-export async function getStaticPaths() {
-  const paths = await fire
-    .firestore()
-    .collection("blog")
-    .onSnapshot((snap) => {
-      snap.docs.map((doc) => {
-        id: doc.id;
-      });
-    });
+// export async function getStaticPaths() {
+//   const paths = await fire
+//     .firestore()
+//     .collection("blog")
+//     .onSnapshot((snap) => {
+//       snap.docs.map((doc) => {
+//         doc.id;
+//       });
+//     });
 
-  return {
-    paths,
-    fallback: false,
-  };
-}
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
