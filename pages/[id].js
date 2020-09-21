@@ -2,17 +2,54 @@ import fire from "../config/fire-config";
 import Link from "next/link";
 const ReactMarkdown = require("react-markdown");
 
-export default function Blog(props) {
+export default function Blog({ content }) {
   return (
     <div>
-      <h1>{props.title}</h1>
-      <ReactMarkdown className="spacing" source={props.content} />
+      <h1>{content.title}</h1>
+      <ReactMarkdown className="spacing" source={content.content} />
       <Link href="/">
         <a className="back-button">Back</a>
       </Link>
     </div>
   );
 }
+
+// export async function getStaticPaths() {
+//   const paths = await fire
+//     .firestore()
+//     .collection("blog")
+//     .onSnapshot((snap) => {
+//       snap.docs.map((doc) => {
+//         doc.id;
+//       });
+//     });
+//   console.log(paths);
+//   return {
+//     paths: paths,
+//     fallback: false,
+//   };
+// }
+
+// export const getStaticProps = async ({ query }) => {
+//   const blog = {};
+//   await fire
+//     .firestore()
+//     .collection("blog")
+//     .doc(query.id)
+//     .get()
+//     .then((result) => {
+//       blog["title"] = result.data().title;
+//       blog["content"] = result.data().content;
+//     });
+
+//   return {
+//     props: {
+//       blog,
+//     },
+//   };
+// };
+
+// This works in local developement
 
 export const getServerSideProps = async ({ query }) => {
   const content = {};
@@ -33,6 +70,8 @@ export const getServerSideProps = async ({ query }) => {
   };
 };
 
+// has not been shown to work
+
 // export async function getStaticPaths() {
 //   const paths = await fire
 //     .firestore()
@@ -42,7 +81,7 @@ export const getServerSideProps = async ({ query }) => {
 //         doc.id;
 //       });
 //     });
-
+//   console.log(paths);
 //   return {
 //     paths,
 //     fallback: false,

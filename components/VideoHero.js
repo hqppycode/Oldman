@@ -82,11 +82,13 @@ const VideoContainer = styled.div`
     color: #228b22;
   }
 `;
+
 const MainTitle = styled.h1`
   position: absolute;
   color: #fff;
-  top: 25%;
-  left: 25vw;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   line-height: 1.3;
   font-size: 72px;
