@@ -1,13 +1,23 @@
 import styled from "@emotion/styled";
 import Header from "./Header";
+import Hamburger from "./HamburgerHeader";
 import Footer from "./Footer";
+import { useState, useEffect } from "react";
 
 export default function Layout({ children }) {
+  const [width, setWidth] = useState();
+
+  useEffect(() => setWidth(window.innerWidth), []);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
+
   return (
     <LayoutContainer>
-      <Header>some stuff</Header>
+      {width > 720 ? <Header /> : <Hamburger />}
       <LayoutWrapper>{children}</LayoutWrapper>
-      <Footer>some more stuff</Footer>
+      <Footer />
     </LayoutContainer>
   );
 }

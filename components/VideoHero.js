@@ -4,22 +4,14 @@ import Link from "next/link";
 export default function Video() {
   return (
     <VideoContainer>
-      <video
+      <VideoEl
         // ref={ref => (this.video = ref)}
         autoPlay
         muted
         loop
-        style={{
-          position: "absolute",
-          width: "100vw",
-          height: "calc(67vh - 50px)",
-          left: 0,
-          top: 75,
-          objectFit: "cover",
-        }}
       >
         <source src="/videos/coverr.mp4" type="video/mp4" />
-      </video>
+      </VideoEl>
       <MainTitle>
         Hoping for the best <br />
         Preparing for the worst
@@ -83,6 +75,19 @@ const VideoContainer = styled.div`
   }
 `;
 
+//need to adjust video height for cell phones after hamburger menu
+const VideoEl = styled.video`
+  position: absolute;
+  width: 100vw;
+  height: calc(67vh - 50px);
+  left: 0;
+  top: 75px;
+  object-fit: cover;
+  @media (max-width: 480px) {
+    top: 60px;
+  }
+`;
+
 const MainTitle = styled.h1`
   position: absolute;
   color: #fff;
@@ -91,7 +96,11 @@ const MainTitle = styled.h1`
   transform: translate(-50%, -50%);
   text-align: center;
   line-height: 1.3;
-  font-size: 72px;
+  font-size: 8.5vw;
+  white-space: nowrap;
+  @media (min-width: 1024px) {
+    font-size: 80px;
+  }
 `;
 
 const SubTitle = styled.h2`

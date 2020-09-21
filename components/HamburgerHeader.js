@@ -1,7 +1,11 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
+import Hamburger from "hamburger-react";
+import { useState } from "react";
 
-export default function Header() {
+export default function HamburgerMenu() {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <Container>
       <Wrapper>
@@ -19,17 +23,12 @@ export default function Header() {
             </a>
           </Link>
         </Logo>
-        <Links>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
-          <Link href="/articles">
-            <a>Survival</a>
-          </Link>
-          <Link href="/contact">
-            <a>Contact</a>
-          </Link>
-        </Links>
+        <Hamburger
+          toggled={isOpen}
+          toggle={setOpen}
+          size={20}
+          direction="right"
+        />
       </Wrapper>
     </Container>
   );
@@ -87,16 +86,42 @@ const Logo = styled.div`
   }
 `;
 
-const Links = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  > * {
-    transition: color 0.1s ease;
-
-    margin-right: 2rem;
-  }
-  > *:hover {
-    color: #228b22;
+const Menu = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background-color: rebeccapurple;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.5s;
+  &.open {
+    opacity: 1;
   }
 `;
+
+// const Links = styled.div`
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+//   > * {
+//     transition: color 0.1s ease;
+
+//     margin-right: 2rem;
+//   }
+//   > *:hover {
+//     color: #228b22;
+//   }
+// `;
+
+{
+  /* <Links>
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+          <Link href="/articles">
+            <a>Survival</a>
+          </Link>
+          <Link href="/contact">
+            <a>Contact</a>
+          </Link>
+        </Links> */
+}
