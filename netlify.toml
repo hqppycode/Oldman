@@ -1,3 +1,3 @@
 [build]
-  command = "npm run build"
-  publish = "trial"
+  command = "npm run build and npm run export"
+  publish = "out"
