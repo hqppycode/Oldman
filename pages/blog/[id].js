@@ -34,17 +34,15 @@ export const getStaticProps = async ({ query }) => {
 };
 
 export async function getStaticPaths() {
-  const content = await fire
+  const paths = await fire
     .firestore()
     .collection("blog")
     .onSnapshot((snap) => {
-      snap.docs.map((doc) => ({
-        id: doc.id,
-      }));
+      snap.docs.map((doc) => doc.id);
     });
 
   return {
-    paths: [{ params: { id: content } }],
+    paths,
     fallback: false,
   };
 }
