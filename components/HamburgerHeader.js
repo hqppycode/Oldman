@@ -135,6 +135,7 @@ const Menu = styled.div`
   position: absolute;
   top: 75px;
   z-index: 5000;
+
   @media (max-width: 500px) {
     top: 60px;
   }
@@ -155,6 +156,7 @@ const Links = styled.div`
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
+  height: calc(100vh - 75px);
   > * {
     transition: color 0.1s ease;
 
