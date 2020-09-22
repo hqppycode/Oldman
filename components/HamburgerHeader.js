@@ -156,7 +156,8 @@ const Links = styled.div`
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
-  height: calc(100vh - 125px);
+  height: calc(100vh - 75px);
+  padding-bottom: 150px;
   > * {
     transition: color 0.1s ease;
 
