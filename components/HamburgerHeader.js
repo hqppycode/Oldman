@@ -1,10 +1,29 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import Hamburger from "hamburger-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function HamburgerMenu() {
   const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    document.addEventListener("click", function clicky() {
+      if (isOpen) {
+        const timer = setTimeout(() => {
+          isOpen ? setOpen(false) : null;
+          document.removeEventListener("click", clicky);
+        }, 300);
+        return () => clearTimeout(timer);
+      }
+    });
+  }, [isOpen]);
+
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     console.log('This will run after 1 second!')
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <Container>
@@ -23,12 +42,30 @@ export default function HamburgerMenu() {
             </a>
           </Link>
         </Logo>
-        <Hamburger
-          toggled={isOpen}
-          toggle={setOpen}
-          size={20}
-          direction="right"
-        />
+        <Right>
+          <Hamburger
+            toggled={isOpen}
+            toggle={setOpen}
+            size={20}
+            direction="right"
+          />
+          <MenuSpacer />
+        </Right>
+        {isOpen && (
+          <Menu>
+            <Links>
+              <Link href="/about">
+                <a>About</a>
+              </Link>
+              <Link href="/articles">
+                <a>Survival</a>
+              </Link>
+              <Link href="/contact">
+                <a>Contact</a>
+              </Link>
+            </Links>
+          </Menu>
+        )}
       </Wrapper>
     </Container>
   );
@@ -86,42 +123,44 @@ const Logo = styled.div`
   }
 `;
 
+const Right = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+`;
+
 const Menu = styled.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: rebeccapurple;
-  z-index: 100;
-  opacity: 0;
+  height: calc(100vh - 75px);
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  top: 75px;
+  z-index: 5000;
+  @media (max-width: 500px) {
+    top: 60px;
+  }
+  /* opacity: 0;
   transition: opacity 0.5s;
   &.open {
     opacity: 1;
-  }
+  } */
 `;
 
-// const Links = styled.div`
-//   display: flex;
-//   justify-content: space-around;
-//   align-items: center;
-//   > * {
-//     transition: color 0.1s ease;
+const MenuSpacer = styled.div`
+  height: 40px;
+  width: 20px;
+`;
 
-//     margin-right: 2rem;
-//   }
-//   > *:hover {
-//     color: #228b22;
-//   }
-// `;
+const Links = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  > * {
+    transition: color 0.1s ease;
 
-{
-  /* <Links>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
-          <Link href="/articles">
-            <a>Survival</a>
-          </Link>
-          <Link href="/contact">
-            <a>Contact</a>
-          </Link>
-        </Links> */
-}
+    margin-right: 2rem;
+  }
+  > *:hover {
+    color: #228b22;
+  }
+`;

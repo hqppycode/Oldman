@@ -99,7 +99,7 @@ const VideoContainer = styled.div`
 //need to adjust video height for cell phones after hamburger menu
 const VideoEl = styled.video`
   position: absolute;
-  width: 100vw;
+  width: 100%;
   height: calc(67vh - 50px);
   left: 0;
   top: 75px;
