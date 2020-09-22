@@ -127,7 +127,7 @@ const MainTitle = styled.h1`
 const SubTitle = styled.h2`
   margin-top: 62vh;
   @media (max-width: 500px) {
-    margin-top: 57vh;
+    margin-top: 60vh;
     font-size: 28px;
   }
 `;
